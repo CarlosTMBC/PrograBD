@@ -13,7 +13,8 @@ public class main {
         frmLogin login = new frmLogin();
         frmPersonas personas = new frmPersonas(principal,true);
         Conexion conexion = new Conexion();
-        ConexionController controlador = new ConexionController(principal, login, personas, conexion);
+        PersonasModel personaM = new PersonasModel();
+        ConexionController controlador = new ConexionController(principal, login, personas, conexion, personaM);
         
     }
     

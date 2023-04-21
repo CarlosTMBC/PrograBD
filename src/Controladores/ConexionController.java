@@ -9,6 +9,7 @@ import Modelos.PersonasModel;
 import Vistas.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,12 +20,14 @@ public class ConexionController implements ActionListener {
     frmLogin VistaLogin;
     frmPersonas VistaPersonas;
     Conexion ModeloConexion;
+    PersonasModel ModeloPersonas;
 
-    public ConexionController(frmPrincipal VistaPrincipal,frmLogin VistaLogin, frmPersonas VistaPersonas, Conexion ModeloConexion) {
+    public ConexionController(frmPrincipal VistaPrincipal,frmLogin VistaLogin, frmPersonas VistaPersonas, Conexion ModeloConexion, PersonasModel ModeloPersonas) {
         this.VistaPrincipal = VistaPrincipal;
         this.VistaLogin = VistaLogin;
         this.VistaPersonas = VistaPersonas;
         this.ModeloConexion = ModeloConexion;
+        this.ModeloPersonas = ModeloPersonas;
         
         
         //Levantar Formulario Principal
@@ -49,17 +52,19 @@ public class ConexionController implements ActionListener {
             if(ModeloConexion != null)
             {
                 this.VistaLogin.dispose();;
+                this.VistaPersonas.btnGuardar.addActionListener(this);
                 this.VistaPersonas.setLocationRelativeTo(null);
                 this.VistaPersonas.setVisible(true);
             }
         }
         
-//        if(e.getSource()==this.VistaPersonas.btnGuardar)
-//        {
-//            this.ModeloPersonas.GuardarPersona();
-//        }
-        //this.VistaPrincipal.setVisible(false);
-        //this.VistaLogin.setVisible(true);    
+        if(e.getSource()==this.VistaPersonas.btnGuardar)
+        {
+            JOptionPane.showMessageDialog(null, "Si escucho Pendejo");
+            // MANDAR Y GUARDAR EL REGISTRO
+            this.ModeloPersonas.GuardarPersona(this.VistaPersonas.txtApellidos.getText(),this.VistaPersonas.txtNombre.getText(),this.VistaPersonas.txtTelefono.getText());
+        }
+  
 }
 
     

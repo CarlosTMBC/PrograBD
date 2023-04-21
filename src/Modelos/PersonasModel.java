@@ -20,8 +20,10 @@ public class PersonasModel {
         this.telefono = telefono;
     }
 
-
-
+    public PersonasModel() {
+        
+    }
+    
     public String getApellidos() {
         return apellidos;
     }
